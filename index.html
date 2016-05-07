@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Using Giphy API</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script type="text/javascript" src="assets/javascript/app.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+ 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	</head>
+	
+<body>
+	<div class="wrapper">
+        <header>
+           <h1>Giphy API usage</h1>
+        </header>
+        <div class="leftContainer left">
+ 			<div class="row">
+  				<div class="col-lg-12"><h3> Search Buttons</h3>
+	   				<div id = "gifButtons">
+
+  					</div>  <!-- end of buttons div -->
+		
+					<div class = "gifSection">
+						<div id = gifs>
+						</div>
+
+					<img src= 'assets/images/Poweredby_100px-White_VertText.png
+					' alt= 'Powered By Giphy!' >
+					<div id = 'apiText'> </div>
+					</div>  <!-- end of gifSection -->
+				</div> 
+			</div>  <!-- end of row -->
+		</div> <!-- end of Left container div -->
+
+		<div class = "rightContainer right">
+			<div class="row">
+  				<div class="col-lg-12"><h3>Add New Buttons</h3>
+				    <div class="input-group">
+				      	<span class="input-group-btn">
+				        <button id = 'addEmotion' class="btn btn-default" type="button">Add!</button>
+				     	</span>
+				      	<input type="text" class="form-control" placeholder="New Emotion...">
+				  	</div><!-- /input-group -->
+				</div>
+			</div>
+		</div>
+
+		<footer>  <!-- start of footer -->
+            <div class = "row">
+                <div class = 'col-xl-12'><h5>Copyright 2016 - James Durant</h5></div>
+            </div>  
+		</footer>  <!-- end of footer -->
+ 	</div> <!-- end of wrapper -->
+</body>
+</html>

@@ -1,1 +1,1 @@
-# giphy-api
+# trivia-game

@@ -1,0 +1,88 @@
+body { 
+	background: url(../images/) no-repeat; 
+	background-size:100%;
+}
+.wrapper{
+	max-width:960px;
+	margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Georgia', Times, Times New Roman, serif;
+	font-weight: 700;
+	color: black;
+}
+
+h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+h3 { 
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+header{
+	height:50px;
+	margin: 0 auto;
+	text-align: center;
+	/*margin-top: 25px;*/
+	background-color: black;
+}
+
+header h1{
+	color:white;
+	vertical-align: center;
+	line-height: 50px;
+}
+
+.leftContainer {
+	margin-top: 50px;
+	width: 500px;
+}
+
+#gifbuttons button{
+	margin: 10px;
+}
+
+.gifSection{
+	margin: 20px 0px;
+}
+.rightContainer {
+	margin-top: 50px;
+	width: 325px;
+}
+.right{
+	float:right;
+}
+.left{
+	float:left;
+}
+.clearfix{
+	clear:both;
+}
+
+footer{
+	width:100%;
+	text-align: center;
+	clear: both;
+}
