@@ -5,21 +5,41 @@ $( document ).ready(function() {
 	// ========================================================
 
 	// Generic function for capturing the movie name from the data-attribute
-	function alertMovieName(){
+	function alertEmotion(){
+		$('#gifs').empty();
+
+
+				
 		var newEmotion = $(this).data('name');
 
-		alert (newEmotion);
-	
-		//var movie = $('#movie-input').val();
-
-		var queryURL = "http://www.omdbapi.com/?t=" + newEmotion + "&y=&plot=short&r=json";
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + newEmotion + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response){
-			$("#apiText").text(JSON.stringify(response));
+			//$("#apiText").text(JSON.stringify(response));
+			var results = response.data;
+			console.log(results)
+                for (var i = 0; i < results.length; i++) {
 
+
+                	var emotionDiv = $('<div class="emotion">')
+                	var p = $('<p>').text("Rating: " + results[i].rating)
+                	var emotionImage = $('<img>');
+                	emotionImage.attr('src', results[i].images.fixed_height.url);
+                	emotionDiv.append(p)
+                    emotionDiv.append(emotionImage)
+                     $('#gifs').prepend(emotionDiv);
+
+
+					// var imageUrl = response.data.image_original_url;
+					// var emotionImage = $("<img>");
+					// emotionImage.attr('src', imageUrl);
+					// emotionImage.attr('alt', 'emotion image');
+					// $('#gifs').prepend(emotionImage);
+				}
 		//renderButtons();
     });
 		return false;
+		
 	}
 
 	// ========================================================
@@ -48,9 +68,7 @@ $( document ).ready(function() {
 		event.preventDefault();
 		$('#gifButtons').empty();
 		var val = $('.form-control').val();
-
 		emotion.push(val);
-
 		renderButtons();
 
 	})
@@ -66,7 +84,7 @@ $( document ).ready(function() {
 	// $('.movie').on('click', alertMovieName); 
 
 	// GOOD CODE = will work for both the original buttons and all of the new buttons
-	$(document).on('click', '.movie', alertMovieName);
+	$(document).on('click', '.emotion', alertEmotion);
 		
 
 	// ========================================================
