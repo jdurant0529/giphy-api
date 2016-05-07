@@ -60,8 +60,8 @@ header h1{
 	width: 500px;
 }
 
-#gifbuttons button{
-	margin: 10px;
+#gifButtons button {
+	margin-left: 5px;
 }
 
 .gifSection{
