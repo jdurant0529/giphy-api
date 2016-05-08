@@ -15,20 +15,35 @@ $( document ).ready(function() {
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + newEmotion + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response){
-			//$("#apiText").text(JSON.stringify(response));
+			$("#apiText").text(JSON.stringify(response));
 			var results = response.data;
 			console.log(results)
                 for (var i = 0; i < results.length; i++) {
 
 
-                	var emotionDiv = $('<div class="emotion">')
+                	var emotionDiv = $('<div class="emotionSet">')
                 	var p = $('<p>').text("Rating: " + results[i].rating)
                 	var emotionImage = $('<img>');
-                	emotionImage.attr('src', results[i].images.fixed_height.url);
+                	emotionImage.attr('src', results[i].images.fixed_height_still.url);
+                	emotionImage.attr('data-still', results[i].images.fixed_height_still.url);
+                	emotionImage.attr('data-animate', results[i].images.fixed_height.url);
+                	emotionImage.attr('data-state',"still");
+                	emotionImage.attr('id','gif-' + i);
+                	emotionImage.addClass('emotionGif');
                 	emotionDiv.append(p)
                     emotionDiv.append(emotionImage)
-                     $('#gifs').prepend(emotionDiv);
+                     $('#gifs').append(emotionDiv);
 
+                    // var state = $(this).attr('data-state'); 
+                    // console.log(state);
+
+              //       if (state == 'still'){
+		            //     $(this).attr('src', $(this).data('animate'));
+		            //     $(this).attr('data-state', 'animate');
+		            // }else{
+		            //     $(this).attr('src', $(this).data('still'));
+		            //     $(this).attr('data-state', 'still');
+		            // }
 
 					// var imageUrl = response.data.image_original_url;
 					// var emotionImage = $("<img>");
@@ -56,11 +71,21 @@ $( document ).ready(function() {
 			    b.attr('id',i);
 			    $("#gifButtons").append(b); 
 			}          
-		// YOUR CODE GOES HERE
-
 
 	}
+	function startStop() {
+		  var state = $(this).attr('data-state'); 
+          console.log("here state" + state);
+		  if (state == 'still'){
+		                $(this).attr('src', $(this).data('animate'));
+		                $(this).attr('data-state', 'animate');
+		            }else{
+		                $(this).attr('src', $(this).data('still'));
+		                $(this).attr('data-state', 'still');
+		            }
+	// 	
 
+	}
 	// ========================================================
 
 	// This function handles events where one button is clicked
@@ -71,9 +96,13 @@ $( document ).ready(function() {
 		emotion.push(val);
 		renderButtons();
 
-	})
+	});
 
 
+	//$('.emotionGif').on('click', function(){
+		//  console.log("I am clicking");
+	// 	
+		 
 
 	// ========================================================
 	// ========================================================
@@ -86,7 +115,7 @@ $( document ).ready(function() {
 	// GOOD CODE = will work for both the original buttons and all of the new buttons
 	$(document).on('click', '.emotion', alertEmotion);
 		
-
+	$(document).on('click', '.emotionGif', startStop);
 	// ========================================================
 	// This calls the renderButtons() function
 	renderButtons();
