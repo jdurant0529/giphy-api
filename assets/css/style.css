@@ -3,7 +3,7 @@ body {
 	background-size:100%;
 }
 .wrapper{
-	max-width:960px;
+	max-width:1000px;
 	margin: 0 auto;
 }
 
@@ -57,19 +57,25 @@ header h1{
 
 .leftContainer {
 	margin-top: 50px;
-	width: 500px;
+	width: 750px;
 }
 
 #gifButtons button {
-	margin-left: 5px;
+
+	margin-left: 15px;
 }
 
 .gifSection{
 	margin: 20px 0px;
 }
+.emotionSet {
+	display:inline-block;
+	margin-left: 10px;
+	margin-top: 25px;
+}
 .rightContainer {
 	margin-top: 50px;
-	width: 325px;
+	width: 250px;
 }
 .right{
 	float:right;

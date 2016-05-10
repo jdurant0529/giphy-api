@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 // Initial array of movies
-	var emotion = ['happy', 'sad', 'excited', 'laughing'];
+	var emotion = ['happy', 'sad', 'excited', 'bored','hungry','angry'];
 
 	// ========================================================
 
@@ -15,7 +15,7 @@ $( document ).ready(function() {
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + newEmotion + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response){
-			$("#apiText").text(JSON.stringify(response));
+			// $("#apiText").text(JSON.stringify(response));
 			var results = response.data;
 			console.log(results)
                 for (var i = 0; i < results.length; i++) {
@@ -94,6 +94,7 @@ $( document ).ready(function() {
 		$('#gifButtons').empty();
 		var val = $('.form-control').val();
 		emotion.push(val);
+		$('.form-control').val('');
 		renderButtons();
 
 	});
