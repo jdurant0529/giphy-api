@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 // Initial array of movies
-	var emotion = ['happy', 'sad', 'excited', 'bored','hungry','angry'];
+	var emotion = ['happy', 'sad', 'excited', 'bored','hungry','angry','lazy','tired','whimsical'];
 
 	// ========================================================
 
@@ -12,17 +12,17 @@ $( document ).ready(function() {
 				
 		var newEmotion = $(this).data('name');
 
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + newEmotion + "&api_key=dc6zaTOxFJmzC&limit=10";
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + newEmotion + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response){
 			// $("#apiText").text(JSON.stringify(response));
 			var results = response.data;
-			console.log(results)
+		
                 for (var i = 0; i < results.length; i++) {
 
 
-                	var emotionDiv = $('<div class="emotionSet">')
-                	var p = $('<p>').text("Rating: " + results[i].rating)
+                	var emotionDiv = $('<div class="emotionSet">');
+                	var p = $('<p>').text("Rating: " + results[i].rating);
                 	var emotionImage = $('<img>');
                 	emotionImage.attr('src', results[i].images.fixed_height_still.url);
                 	emotionImage.attr('data-still', results[i].images.fixed_height_still.url);
@@ -30,28 +30,12 @@ $( document ).ready(function() {
                 	emotionImage.attr('data-state',"still");
                 	emotionImage.attr('id','gif-' + i);
                 	emotionImage.addClass('emotionGif');
-                	emotionDiv.append(p)
-                    emotionDiv.append(emotionImage)
+                	emotionDiv.append(p);
+                    emotionDiv.append(emotionImage);
                      $('#gifs').append(emotionDiv);
 
-                    // var state = $(this).attr('data-state'); 
-                    // console.log(state);
-
-              //       if (state == 'still'){
-		            //     $(this).attr('src', $(this).data('animate'));
-		            //     $(this).attr('data-state', 'animate');
-		            // }else{
-		            //     $(this).attr('src', $(this).data('still'));
-		            //     $(this).attr('data-state', 'still');
-		            // }
-
-					// var imageUrl = response.data.image_original_url;
-					// var emotionImage = $("<img>");
-					// emotionImage.attr('src', imageUrl);
-					// emotionImage.attr('alt', 'emotion image');
-					// $('#gifs').prepend(emotionImage);
 				}
-		//renderButtons();
+
     });
 		return false;
 		
@@ -75,7 +59,7 @@ $( document ).ready(function() {
 	}
 	function startStop() {
 		  var state = $(this).attr('data-state'); 
-          console.log("here state" + state);
+        
 		  if (state == 'still'){
 		                $(this).attr('src', $(this).data('animate'));
 		                $(this).attr('data-state', 'animate');
@@ -92,18 +76,14 @@ $( document ).ready(function() {
 	$('#addEmotion').on('click', function(event){
 		event.preventDefault();
 		$('#gifButtons').empty();
-		var val = $('.form-control').val();
+		var val = $('.form-control').val().trim();
 		emotion.push(val);
 		$('.form-control').val('');
 		renderButtons();
-
+		return false;
 	});
 
-
-	//$('.emotionGif').on('click', function(){
-		//  console.log("I am clicking");
-	// 	
-		 
+ 
 
 	// ========================================================
 	// ========================================================
@@ -123,4 +103,4 @@ $( document ).ready(function() {
 
 
 
-})
+});
